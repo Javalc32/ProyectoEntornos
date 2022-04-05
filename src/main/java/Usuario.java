@@ -1,40 +1,44 @@
 import java.util.Scanner;
 
 public class Usuario {
-    private String username;
-    private String password;
 
-    Usuario(){
-        Scanner sc= new Scanner(System.in);
-        System.out.println("Introduce el nombre de usuario: ");
-        this.username=sc.nextLine();
-        System.out.println("Introduce la contraseña: ");
-        this.password= sc.nextLine();
-    }
+    private String nombre;
+    private String pass;
+    private int intentosRestantes = 3;
 
-    Usuario(String username, String password){
-        this.username=username;
-        this.password=password;
-    }
 
-    public String getUsername(){
-        return username;
-    }
-
-    public String getPassword(){
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
+    Usuario(String nombre, String pass) {
+        this.nombre = nombre;
+        this.pass = pass;
     }
 
     @Override
     public String toString() {
-        return "Mi nombre es " + username + " y mi pass es " + password ;
+        return "Mi nombre es " + nombre + " y mi pass es " + pass;
     }
+
+    public boolean nombreCorrecto(String nombreCandidato) {
+        return nombreCandidato.contentEquals(nombre);
+    }
+
+    public boolean passCorrecta(String pasCandidata) {
+        if (pasCandidata.contentEquals(pass)) {
+            intentosRestantes = 3;
+            return true;
+        } else {
+            intentosRestantes--;
+            return false;
+        }
+    }
+
+    public boolean quedanIntentos() {
+        return intentosRestantes > 0;
+    }
+
+
+    public boolean coincidePass(String pass1, String pass2) {
+        return pass1.equals(pass2);
+    }
+
+
 }
