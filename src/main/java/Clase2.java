@@ -17,7 +17,11 @@ public class Clase2 {
                 System.out.println("Alerta Hackerman!");
             }
         }else{
-
+            if (l.registro()){
+                System.out.println("Usuario registrado");
+            }else {
+                System.out.println("Fallo en el registro");
+            }
         }
 
     }

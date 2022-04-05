@@ -40,5 +40,10 @@ public class Usuario {
         return pass1.equals(pass2);
     }
 
+    public String getPass(String pass){
+        return this.pass=pass;
+    }
+
+
 
 }

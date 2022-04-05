@@ -22,19 +22,26 @@ public class ListaUsuarios {
 
             if (usuarioCandidato!=null) {
                 System.out.println("El usuario ya existe");
-            }
+                return false;
+            }else {
+                System.out.println("Introduce la pass del usuario " + nombreCandidato);
+                String passCandidata1 = sc.nextLine();
 
-            System.out.println("Introduce la pass del usuario " + nombreCandidato);
-            String passCandidata1 = sc.nextLine();
 
+                System.out.println("Introduce la pass de nuevo: ");
+                String passCandidata2 = sc.nextLine();
 
-
-            System.out.println("Introduce la pass de nuevo: ");
-            String passCandidata2 = sc.nextLine();
-
-            if (!usuarioCandidato.coincidePass(passCandidata1, passCandidata2)){
-                System.out.println("Las passwords no coinciden");
-                usuarioCandidato.
+                if (!usuarioCandidato.coincidePass(passCandidata1, passCandidata2)){
+                    System.out.println("Las passwords no coinciden");
+                    usuarioCandidato.getPass(passCandidata1);
+                    return false;
+                }else {
+                    for (byte cont=0; cont<10; cont++){
+                        if (usuarios[cont]!=null)
+                            usuarios[cont]=usuarioCandidato;
+                    }
+                    return true;
+                }
             }
     }
 
